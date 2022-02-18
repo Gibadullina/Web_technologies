@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <meta charset="UTF-8" />
 <HTML>
-  <HEAD><TITLE>Задание 1</TITLE></HEAD>
+  <HEAD><TITLE>Задание 3</TITLE></HEAD>
    <BODY>
    <p>Лабораторная работа №1</p>
     <script language="javascript"> 
-       alert ("Приветствуем!");
-       document.writeln("Приветствуем!");
+      var text1 = window.prompt ('Введите сюда своё имя','Введите имя');
+	  document.writeln("Ваше имя "+ text1+"?");
+	    if (confirm("Начать заново?")) {
+	       alert ('Не надоело?');
+	   } 
+	    else {
+	   alert ('Ну и правильно!');
+	   }
      </script >
-   <p>Введение в JavaScript</p>
-
 </BODY> </HTML>
