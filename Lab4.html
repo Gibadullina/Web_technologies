@@ -2,19 +2,30 @@
 <meta charset="UTF-8" />
 <html>
  <head>
-   <title>if</title>
+   <title>Задание 4</title>
  </head>
     <body>
       <script language="JavaScript" type="text/JavaScript">
-       var x, y;
-     x=parseInt(prompt("Введите значение х",'')); // метод parseInt() переводит строку в целое
-     y=parseInt(prompt("Введите значение у",'')); // число
-      if(x<y){
+	 var pass1 = window.prompt ('Введите пароль','Введите имя');
+	 var password = "1234";
+	 if (pass1==password) {
+        var x, y;
+       x=parseInt(prompt("Введите значение х",'')); // метод parseInt() переводит строку в целое
+       y=parseInt(prompt("Введите значение у",'')); // число
+         if(x<y){
       alert(" Максимальное число - y");
-       } 
-	   else {
+         } 
+	     else if (x>y) {
       alert(" Максимальное число - x");
-       }
+         }
+	      else {
+	   alert (" Введенные числа равны!");
+	      }
+	   document.writeln("Введенный пароль правильный!"); //вывод в окно браузера (верный пароль)
+	 } 
+	   else { 
+	   document.writeln("Неверный пароль");
+	   }
        </script>
      </body>
 </html> 
