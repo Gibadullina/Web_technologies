@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <meta charset="UTF-8" />
-<HTML>
-  <HEAD><TITLE>Задание 1</TITLE></HEAD>
-   <BODY>
-   <p>Лабораторная работа №1</p>
-    <script language="javascript"> 
-       alert ("Приветствуем!");
-       document.writeln("Приветствуем!");
-     </script >
-   <p>Введение в JavaScript</p>
+<html>
+  <head>
+   <title>for</title>
+  </head>
+  <body>
+  <h1>Пример простой</h1>
+     <script language="JavaScript" type="text/JavaScript">
+       var a=0;
+	   function line()
+       {	     
+    document.writeln("<hr align='center' width='"+(a+=10)+"'>");
+    }
 
-</BODY> </HTML>
+     for (var i=1; i<=10; i++) 
+      line(); 
+
+     </script>
+   </body>
+</html> 
