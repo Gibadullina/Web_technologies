@@ -3,14 +3,23 @@
  <html>
     <head>
        <title>Задание 7</title>
+	  <script language="JavaScript">
+	  function school(){
+     subjects = new Array("русский язык"," литература"," история"," обществознание"," физическая культура"," музыка",
+   " ОБЖ"," математика"," физика"," химия"," информатика"," МХК");
+      hum = new Array(); //гум.  
+	  exact = new Array(); //точн.
+       hum=subjects.slice(0,4);
+	   exact=subjects.slice(7,11);
+	   //вывод
+      document.write("Гуманитарные предметы: "+hum+"<br>");
+	  document.write("Точные предметы: "+exact+"<br>");
+	  }
+       </script>
     </head>
    <body>
        <script language="JavaScript">
-      year = new Array("декабрь","январь","февраль","март","апрель","май",
-   "июнь","июль","август","сентябрь","октябрь","ноябрь");
-      summer = new Array(); //летние месяцы
-      summer=year.slice(6,9);
-      document.write(summer+"<br>");
-       </script>
+	   school();
+	   </script>
     </body>
 </html>
