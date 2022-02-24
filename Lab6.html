@@ -5,24 +5,12 @@
    <BODY>
    <p>Лабораторная работа №1</p>
  <script language="JavaScript" type="text/JavaScript">
- for (var i=0; i<10; i++)
-
-document.write("2^2=" + Math.pow(2,2) + "<br>");
-
-document.write("2^3=" + Math.pow(2,3) + "<br>");
-
-document.write("2^4=" + Math.pow(2,4) + "<br>");
-
-document.write("2^5=" + Math.pow(2,5) + "<br>");
-
-document.write("2^6=" + Math.pow(2,6) + "<br>");
-
-document.write("2^7=" + Math.pow(2,7) + "<br>");
-
-document.write("2^8=" + Math.pow(2,8) + "<br>");
-
-document.write("2^9=" + Math.pow(2,9) + "<br>");
-
+	 document.write('<table border="1" style="border-collapse: collapse; text-align: right">');
+	 document.write('<tr><td style="width: 35px">Степень</td><td style="width: 35px">Результат</td></tr>');
+      for(var i=0; i<11; i++) {
+    document.write('<tr><td style="width: 35px">2 <sup>'+i+'</sup></td><td style="width: 35px">'+Math.pow(2,i)+'</td></tr>');
+}
+document.write('</table>');
      </script >
    <p>Введение в JavaScript</p>
 
