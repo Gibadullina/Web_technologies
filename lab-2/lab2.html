@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Пример</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+        $(document).ready(function() {
+		   $(".btn-slide").click(function() {
+		      $("#panel").slideToggle("slow");
+			  $(this).toggleClass("active");
+			});
+					//удаление элемента со страницы
+		$(".pane .delete").click(function() {
+		   $(this).parents(".pane").animate({opacity: "hide"}, "slow");
+		 });
+		 //управление элементом на странице
+		 $(".run").click(function() {
+		  $("#box").animate({opacity:"0.1", left:"+=400"}, 1200)
+		  .animate({opacity:"0.4", top:"+=160", height:"40", wigth:"40"},"slow")
+		  .animate({opacity:"1", left:"0", height:"50", wigth:"10"},"slow")
+		  .animate({top:"0"}, "fast")
+		  .slifeUp()
+		  .slideDown("slow")
+		  return false;
+		  })
+		});	
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Выдвижная панель -->
+	<div id ="panel">
+	   Выдвижная панель 
+    </div>
+	<button class="btn-slide"> Нажми!</button>
+   </div>
+	 <div class="pane">
+	      <span alt="delete" class="delete">X</span>
+		 <p>jQuery - библиотека JavaScript, фокусирующаяся на взаимодействии 
+		 JavaScript и HTML. Библиотека jQuery помогает леко получать доступ 
+		 к любому элементу DOM, обращаться к атрибутам и содержимому элементов 
+		 DOM, манипулировать ими. Также библиотека jQuery представляет 
+		 удобный API при работе с AJAX.</p>
+	 </div>
+	 <br>
+	 <!-- Управление элементом на странице -->
+	 <button class="run">Начать движение</button>
+       	 <div class="control_block_container">
+		 <div id="box">Управляемый блок</div>
+<style type="text/css">
+    .wrapper {
+	background: lightpink;
+	}
+	.btn-slide {
+	   padding: 5px 10px 10px;
+	   color: #FFC0CB;
+	   background: white;
+	}
+	body {
+      margin: 10px auto;
+      width: 470px;
+    }
+
+    h3 {
+      margin: 0;
+      padding: 0 0 .3em;
+    }
+
+    p {
+      margin: 0;
+      padding: 0 0 .5em;
+    }
+
+    .pane {
+      background: pink;
+      padding: 10px 20px 10px;
+      position: relative;
+      border-top: solid 2px lightpink;
+    }
+
+    .pane .delete {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+	  }
+     #box {
+    background: #6699FF;
+    height: 100px;
+    width: 100px;
+    position: relative;
+	 }
+  </style>
+</body>
+</html>

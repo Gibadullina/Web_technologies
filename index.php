@@ -13,6 +13,7 @@
 Лабораторная работа № 2 
     <ul>
 	 <li><a href="lab-2/test.html">Тест</a></li>
+ <li><a href="lab-2/lab2.html">Пример</a></li>	 
  <li><a href="lab-2/lab_2-1.html">Задание 1</a></li>
  <li><a href="lab2.html">Задание 2</a></li>
  <li><a href="lab3.html">Задание 3</a></li>
