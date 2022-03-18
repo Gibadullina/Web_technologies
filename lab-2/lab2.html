@@ -18,13 +18,27 @@
 		 //управление элементом на странице
 		 $(".run").click(function() {
 		  $("#box").animate({opacity:"0.1", left:"+=400"}, 1200)
-		  .animate({opacity:"0.4", top:"+=160", height:"40", wigth:"40"},"slow")
-		  .animate({opacity:"1", left:"0", height:"100", wigth:"100"},"slow")
+		  .animate({opacity:"0.4", top:"+=160", height:"40", width:"40"},"slow")
+		  .animate({opacity:"1", left:"0", height:"100", width:"100"},"slow")
 		  .animate({top:"0"}, "fast")
 		  .slideUp()
 		  .slideDown("slow")
 		  return false;
 		  })
+		  // Реализация блоков "аккордеон"
+		  $(document).ready(function(){
+    $(".accordion h3:first").addClass("active");
+    $(".accordion p:not(:first)").hide();
+
+    $(".accordion h3").click(function(){
+
+        $(this).next("p").slideToggle("slow")
+        .siblings("p:visible").slideUp("slow");
+        $(this).toggleClass("active");
+        $(this).siblings("h3").removeClass("active");
+     });
+ 
+ });
 		});	
   </script>
 </head>
@@ -36,6 +50,7 @@
     </div>
 	<button class="btn-slide"> Нажми!</button>
    </div>
+   <br>
 	 <div class="pane">
 	      <span alt="delete" class="delete">X</span>
 		 <p>jQuery - библиотека JavaScript, фокусирующаяся на взаимодействии 
@@ -48,9 +63,39 @@
 	 <!-- Управление элементом на странице -->
 	 <button class="run">Начать движение</button>
        	 <div class="control_block_container">
-		 <div id="box">Управляемый блок</div>
+		 <br>
+		 <div id="box">Управляемый блок</div><div>
+		<br>
+ <!-- Блоки Аккордеон -->
+		<div class="accordion">
+    <h3>Первый заголовок</h3> 
+    <p><b>Первый блок</b><br />jQuery - библиотека JavaScript,
+    фокусирующаяся на взаимодействии JavaScript и HTML. 
+    Библиотека jquery помогает легко получать доступ 
+    к любому элементу DOM, обращаться к атрибутам и 
+    содержимому элементов DOM, манипулировать ими. 
+    Также библиотека jQuery предоставляет удобный API 
+    при работе с AJAX.</p> 
+    <h3>Второй заголовок</h3> 
+    <p><b>Первый блок</b><br />jQuery - библиотека Javascript, 
+    фокусирующаяся на взаимодействии Javascript и HTML. 
+    Библиотека jquery помогает легко получать доступ 
+    к любому элементу DOM, обращаться к атрибутам и 
+    содержимому элементов DOM, манипулировать ими. 
+    Также библиотека jQuery предоставляет удобный API 
+    при работе с AJAX.</p> 
+    <h3>Третий заголовок</h3> 
+    <p><b>Первый блок</b><br />jQuery - библиотека Javascript, 
+    фокусирующаяся на взаимодействии Javascript и HTML. 
+    Библиотека jQuery помогает легко получать доступ 
+    к любому элементу DOM, обращаться к атрибутам и 
+    содержимому элементов DOM, манипулировать ими. 
+    Также библиотека jQuery предоставляет удобный API 
+    при работе с AJAX.</p>
+</div>
+		 
 <style type="text/css">
-    .wrapper {
+    .wrapper #panel{
 	background: lightpink;
 	}
 	.btn-slide {
@@ -87,11 +132,20 @@
       cursor: pointer;
 	  }
      #box {
-    background: #6699FF;
+    background: #FFC0CB;
     height: 100px;
     width: 100px;
     position: relative;
 	 }
+	 .accordion p{
+	 background: pink;
+	 }
+	 .accordion h3{
+	 background: lightpink;
+	 text: Times New Roman;
+	 color: ;
+	 }
+	  
   </style>
 </body>
 </html>
