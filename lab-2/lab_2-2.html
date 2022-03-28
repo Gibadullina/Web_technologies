@@ -6,26 +6,63 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script type="text/javascript">
-  var colors = ['blue', 'yellow', 'black', 'white', 'red', 'green', 'pink','purple'];
-    $(document).ready(function () {
+    /*$(document).ready(function () {
+	    
 	   $("#test").click(function(){
       $("body").css("backgroundColor", colors[Math.floor(Math.random() * colors.length)]);
-	  });
-	 /* $("#test").click(function(){
-      $("body").css("backgroundColor", "#ffffff");
 	  });*/
+$(document).ready(function(){
+    	$("#form1").validate();
+  	});
+		$.validator.messages.required = "Заполните поле!";
+		$.validator.messages.email = "Неверный формат email";
+		$.validator.messages.url = "Неверный формат url, начните с http://";
+
+
     });
+	/*var v=document.user.e.value.indexOf("@",1);
+if(document.user.f.value=="")
+{
+
+alert('Вы должны заполнить поле ФИО');
+document.user.f.focus();
+ }
+if(document.user.a.value=="")
+{
+alert('Вы должны заполнить поле адреса');
+document.user.a.focus();
+ }
+ if(document.user.e.value=="")
+{
+alert('Вы должны заполнить поле e-mail'); document.user.e.focus();
+ }
+if(v==-1)
+{
+alert('Адрес e-mail указан неверно');
+document.user.e.select(); document.user.e.focus();
+ }
+ else document.user.submit();
+ } */
   </script>
 </head>
 <body>
-  <p align="center"><font size=6>Данные о пользователе</font>
-   <form name="user">
-     <b>Пожалуйста, укажите данные о себе:</b>
-     <br> ФИО
-     <input type="text" name="f" size="30"><br> Адрес<input type="text"
-     name="a" size="35"><br> e-mai<input type="text" name="e" size="30"><br>
-     <input type="button" value="Послать" >
-     <input type="reset" value="Отменить">
+  <p align="center"><font size=6>Заполните поля</font>
+   <form name="user" id="form1">
+     <br> Ваше имя
+     <input type="text" name="f" size="30" class="required"> 
+	 <br> Пароль
+	 <input type="password" name="p1" size="35" class="required">
+	 <br> Подтверждение пароля
+	 <input type="password" name="p2" size="35" class="required">
+	 <br> Email
+	 <input type="text" name="e" size="35" class="required">
+	 <br> Тема сообщения
+	 <input type="text" name="t" size="35">
+	 <br> Сообщение<br>
+	 <textarea rows="10" cols="45" name="text" class="required"></textarea>
+	 <br>
+     <input type="button" value="Отправить" >
+     <input type="reset" value="Очистить">
    </form>
  </p> 
 </body>

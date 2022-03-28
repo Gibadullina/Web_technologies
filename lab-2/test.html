@@ -1,24 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>lab_2-1</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+<meta charset="utf-8">
+<title>Проверка заполнения полей формы с помощью jQuery</title>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="jquery.validate.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript">
-  var colors = ['blue', 'yellow', 'black', 'white', 'red', 'green', 'pink','purple'];
-    $(document).ready(function () {
-	   $("#test").click(function(){
-      $("body").css("backgroundColor", colors[Math.floor(Math.random() * colors.length)]);
-	  });
-	 /* $("#test").click(function(){
-      $("body").css("backgroundColor", "#ffffff");
-	  });*/
-    });
-  </script>
+<script>
+	$(document).ready(function(){
+    	$("#demoForm").validate();
+  	});
+		$.validator.messages.required = "Заполните поле!";
+		$.validator.messages.email = "Неверный формат email";
+		$.validator.messages.url = "Неверный формат url, начните с http://";
+</script>	
 </head>
-<body>
- 
-   <input type="button" id="test" value="Изменить цвет фона"/>
-</body>
+	<body>
+		 <form id="demoForm" method="get" action="">
+			 <fieldset>
+			   <div>
+				 <label>Имя</label>
+				 <em>*</em><input name="name" size="25" class="required" minlength="2" />
+			   </div>
+
+			   <div>
+				 <label>E-Mail</label>
+				 <em>*</em><input name="email" size="25"  class="required email" />
+			   </div>
+
+			   <div>
+				 <label>URL сайта</label>
+				 <em>  </em><input name="url" size="25"  class="url" value="" />
+			   </div>
+
+			   <div>
+				 <label>Комментарий</label>
+				 <em>*</em><textarea name="comment" cols="22"  class="required"></textarea>
+			   </div>
+
+			   <div>
+				 <input type="submit" value="Отправить"/>
+			   </div>
+			 </fieldset>
+		 </form>
+	</body>
 </html>
