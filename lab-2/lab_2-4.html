@@ -2,42 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>lab_2-3</title>
+  <title>lab_2-4</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script type="text/javascript">
-   $(document).on('keydown', function() {
-       if (event.keyCode == 37) {
-        $("#img1").animate({left:"-=100"}, 1200)		
-    }
-    if (event.keyCode == 38) {
-		 $("#img1").animate({top:"-=100"}, 1200)
-    }
-    if (event.keyCode == 39) {
-	    $("#img1").animate({left:"+=100"}, 1200)
-    }
-    if (event.keyCode == 40) {
-	   $("#img1").animate({top:"+=100"}, 1200)
-    }
-  });
+  $(document).mousemove(function(e){
+    var X = e.pageX; // положения по оси X
+    var Y = e.pageY; // положения по оси Y
+    alert("X: " + X + " Y: " + Y); // вывод результата в консоль
+});   
   </script>
 </head>
 <body>
-<p id="text1">Нажимайте на стрелочки на вашей клавиатуре</p>
- <img id="img1" src="img/image1.jpg" >
- </p> 
- <style>
- #img1{
- height:260px;
- width:240px;
- position:absolute;
-	left:450px;
-	top:140px;
- }
- #text1 {
- color: grey;
- font-family: Verdana, Arial, Helvetica, sans-serif;
- }
- </style>
+
 </body>
 </html>
