@@ -4,66 +4,106 @@
   <meta charset="utf-8">
   <title>lab_2-2</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript">
-    /*$(document).ready(function () {
-	    
-	   $("#test").click(function(){
-      $("body").css("backgroundColor", colors[Math.floor(Math.random() * colors.length)]);
-	  });*/
-$(document).ready(function(){
-    	$("#form1").validate();
-  	});
-		$.validator.messages.required = "Заполните поле!";
-		$.validator.messages.email = "Неверный формат email";
-		$.validator.messages.url = "Неверный формат url, начните с http://";
+
+  $('document').ready(function() {
+    $('#button').on('click', function() {
+      $('.form_box .rfield').each(function() {
+        if ($(this).val() != '') {
+          console.log(32);
+          // Если поле не пустое удаляем класс-указание
+          $(this).removeClass('empty_field');
+        } else {
+          console.log(33);
+          // Если поле пустое добавляем класс-указание
+          $(this).addClass('empty_field');
+        }
+      });
+	   $('.form_box .pass').each(function() {
+        if (($(this).val().length >4) &&($("#p1").val())==$("#p2").val()) {
+          console.log(32);
+          // Если поле не пустое удаляем класс-указание
+          $(this).removeClass('empty_field');
+        } else {
+          console.log(33);
+          // Если поле пустое добавляем класс-указание
+          $(this).addClass('empty_field');
+        }
+      }); 
+	   if ($("#letter").val().length >10) {
+          console.log(32);
+          // Если поле не пустое удаляем класс-указание
+          $("#letter").removeClass('empty_field');
+        } else {
+          console.log(33);
+          // Если поле пустое добавляем класс-указание
+          $("#letter").addClass('empty_field');
+        }
 
 
+		 if ($("#ml").val() != '' && $("#ml").val().indexOf("@",1)!==-1) {
+          console.log(32);
+          // Если поле не пустое удаляем класс-указание
+          $("#ml").removeClass('empty_field');
+        } else {
+          console.log(33);
+          // Если поле пустое добавляем класс-указание
+          $("#ml").addClass('empty_field');
+        }
+      });
     });
-	/*var v=document.user.e.value.indexOf("@",1);
-if(document.user.f.value=="")
-{
 
-alert('Вы должны заполнить поле ФИО');
-document.user.f.focus();
- }
-if(document.user.a.value=="")
-{
-alert('Вы должны заполнить поле адреса');
-document.user.a.focus();
- }
- if(document.user.e.value=="")
-{
-alert('Вы должны заполнить поле e-mail'); document.user.e.focus();
- }
-if(v==-1)
-{
-alert('Адрес e-mail указан неверно');
-document.user.e.select(); document.user.e.focus();
- }
- else document.user.submit();
- } */
   </script>
+    <style type="text/css">
+    .form_box input.empty_field {
+      border-width: 2px;
+      border-color: red;
+    }
+    .form_box {
+      width: 300px;
+      margin: 40px auto;
+    }
+    .form_box input {
+      display: block;
+      border: 2px solid #cfcfcf;
+      font-size: 14px;
+      color: #444444;
+      padding: 7px 7px 8px;
+      width: 250px;
+      margin-bottom: 20px;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+    }
+    .form_box input:focus {
+      outline: none;
+      border-color: #07a6e6;
+    }
+
+  </style>
 </head>
 <body>
-  <p align="center"><font size=6>Заполните поля</font>
+ <div class="form_box">
+  <p align="left"><font size=5 >Заполните поля</font>
    <form name="user" id="form1">
      <br> Ваше имя
-     <input type="text" name="f" size="30" class="required"> 
+     <input class="rfield" type="text" name="f" size="30"> 
 	 <br> Пароль
-	 <input type="password" name="p1" size="35" class="required">
+	 <input id="p1" class="pass" type="password" name="p1" size="35">
 	 <br> Подтверждение пароля
-	 <input type="password" name="p2" size="35" class="required">
+	 <input id="p2" class="pass" type="password" name="p2" size="35" >
 	 <br> Email
-	 <input type="text" name="e" size="35" class="required">
+	 <input id="ml"  type="text" name="e" size="35" >
 	 <br> Тема сообщения
-	 <input type="text" name="t" size="35">
+	 <input class="rfield" type="text" name="t" size="35">
 	 <br> Сообщение<br>
-	 <textarea rows="10" cols="45" name="text" class="required"></textarea>
+	 <input id="letter" type="text" name="text" size="35">
 	 <br>
-     <input type="button" value="Отправить" >
+     <input type="button" id="button" value="Отправить" >
      <input type="reset" value="Очистить">
    </form>
  </p> 
+ </div>
 </body>
 </html>
