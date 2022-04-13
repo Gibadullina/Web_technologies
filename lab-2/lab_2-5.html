@@ -1,59 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
   <meta charset="utf-8">
   <title>lab_2-5</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript">
- var isDragging = false;
- $(".drag")
- .mousedown(function() {
-    isDragging = false;
-})
-.mousemove(function() {
-    isDragging = true;
- })
-.mouseup(function() {
-    var wasDragging = isDragging;
-    isDragging = false;
-    if (!wasDragging) {
-        $("#img2").toggle();
-    }
-});
-  </script>
-</head>
-<body>
- <!--<img id="img1" src="img/image2.png" >  <img id="img3" src="img/image5.png" >
-  <img id="img4" src="img/image6.png" >
-  <img id="img5" src="img/image7.png" >-->
- <div class="chtree">
-   <img id="img1" src="img/image3.png" >
-   <p id="text1">Перетащите игрушки на елочку</p>
-<div class="drag">
-  <img id="img2" src="img/image4.png" >
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        div {
+            cursor: pointer;
+            position: absolute;
+            float: left;
+            width: 70px;
+            height: 70px;
+            left: 40%;
+            top: 50%;
+            margin-top: -50px;
+        }
+        .box1 {
+            background: #a681a6;
+			border-radius: 50%;
+            margin-left: -150px;
+        }
+        .box2 {
+	        background: #bd97bd;
+            border-radius: 30%;
+			margin-left: 50px;
+			}
+        .box3 {
+            background: #ebc4eb;
+            margin-left: 250px;
+        }
 
- </div>
- </div>
- <style>
- #img1{
- height:340px;
- width:320px;
- position:absolute;
-	left:450px;
-	top:140px;
- }
-   #img2 {
-    height:50px;
-    width:40px;
-  }
- #text1 {
- color: green;
- font-family: Verdana, Arial, Helvetica, sans-serif;
- }
- body {
- background-color: lightblue;
- }
- </style>
+    </style>
+</head>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+
+<script>
+    $(function () {
+       // шар 1
+       $('.box1').mousedown(function (e) {
+             var boxLeft = e.offsetX,
+             boxTop = e.offsetY; 
+           $(document).mousemove(function (event) {
+               $('.box1').offset({
+                left: event.pageX-boxLeft, 
+                top: event.pageY-boxTop 
+               })
+           })
+       }).mouseup(function () {
+            $ (document) .off ('mousemove'); 
+        });
+ 
+        
+        // шар 2
+        $('.box2').mousedown(function (e) {
+            var boxLeft = e.offsetX,
+                boxTop = e.offsetY;
+            $(document).mousemove(function (event) {
+                $('.box2').offset({
+                    left:event.pageX-boxLeft,
+                    top:event.pageY-boxTop
+                })
+            })
+        }).mouseup(function () {
+            $(document).off('mousemove');
+        });
+    })
+	       // шар 3
+        $('.box3').mousedown(function (e) {
+            var boxLeft = e.offsetX,
+                boxTop = e.offsetY;
+            $(document).mousemove(function (event) {
+                $('.box3').offset({
+                    left:event.pageX-boxLeft,
+                    top:event.pageY-boxTop
+                })
+            })
+        }).mouseup(function () {
+            $(document).off('mousemove');
+        });
+
+</script>
 </body>
 </html>
