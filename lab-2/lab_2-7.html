@@ -188,10 +188,10 @@ nums[i]="+"+sum;
 <body>
   <fieldset>
  <legend> Калькулятор </legend>
-   <input type="text" name="f" size="30" id="output"> 
+   <input type="text" name="f" size="20" id="output"> 
 
-   <button name="delete1" id="d1">>></button>
-   <button name="reset" id="reset">C</button>
+   <button name="delete1" id="d1" class="ddd">>></button>
+   <button name="reset" id="reset" class="ddd">C</button>
    <br>
   <button name="button_num_1" id="b_n1">1</button>
   <button name="button_num_2" id="b_n2">2</button>
@@ -218,10 +218,38 @@ nums[i]="+"+sum;
 
 
  <style>
+  legend {
+  background-color:#7160aa;
+  border-radius: 5055px;
+   font:  italic 1.2em "Fira Sans", serif;
+  }
   fieldset {
+ 
   border-radius: 4px;
-  width: 100px;
-  height: 100 px;
+  width: 250px;
+  height: 210px;
+  background-color: #877495;  
+  }
+  button {
+   border-radius: 5px;
+   width: 40px;
+   height: 30px;
+   background-color: #e2b9ff;
+   border-color:   #f1dcff; 
+   padding-left: 10px;
+  }
+  .ddd {
+   width: 30px;
+   height: 20px;
+    padding-left: 2px;
+  }
+  #b_n0  {
+  width: 84px;
+  height: 30px;
+  }
+  #b_res {
+  
+     width: 172px;
   }
  </style>
 </body>
