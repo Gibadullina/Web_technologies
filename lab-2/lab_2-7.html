@@ -6,12 +6,189 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script type="text/javascript">
 
+$(document).ready(function(){
+let i=0;
+var nums=['+'];
+let k='';
+let p = 0;
+let sum=0;
+let val=0;
+let valg="";
+
+
+
+$('#output').prop('readonly','readonly');
+
+$('#b_n1').on('click', function(){
+$('#output').val($('#output').val()+"1");
+k='1';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n2').on('click', function(){
+$('#output').val($('#output').val()+"2");
+k='2';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n3').on('click', function(){
+$('#output').val($('#output').val()+"3");
+k='3';
+nums[i]=nums[i]+k;
+ });
+ 
+ 
+ $('#b_n4').on('click', function(){
+$('#output').val($('#output').val()+"4");
+k='4';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n5').on('click', function(){
+$('#output').val($('#output').val()+"5");
+k='5';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n6').on('click', function(){
+$('#output').val($('#output').val()+"6");
+k='6';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n7').on('click', function(){
+$('#output').val($('#output').val()+"7");
+k='7';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n8').on('click', function(){
+$('#output').val($('#output').val()+"8");
+k='8';
+nums[i]=nums[i]+k;
+ });
+ 
+ $('#b_n9').on('click', function(){
+$('#output').val($('#output').val()+"9");
+k='9';
+nums[i]=nums[i]+k;
+ });
+ 
+  $('#b_n0').on('click', function(){
+$('#output').val($('#output').val()+"0");
+k='0';
+nums[i]=nums[i]+k;
+ });
+ 
+   $('#b_sum').on('click', function(){
+$('#output').val($('#output').val()+"+");
+i++;
+nums[i]='+';
+ });
+ 
+ $('#b_dif').on('click', function(){
+$('#output').val($('#output').val()+"-");
+
+i++;
+nums[i]="-";
+ });
+ 
+  $('#b_mult').on('click', function(){
+$('#output').val($('#output').val()+"*");
+i++;
+nums[i]='*';
+ });
+ 
+ $('#b_dec').on('click', function(){
+$('#output').val($('#output').val()+"/");
+i++;
+nums[i]='/';
+ });
+ 
+ $('#reset').on('click', function(){
+$('#output').val("");
+nums.length=0;
+i=0;
+nums[i]='+';
+ });
+ 
+ $('#b_p').on('click', function(){
+$('#output').val($('#output').val()+".");
+k='.';
+nums[i]=nums[i]+k;
+ });
+ 
+ 
+ $('#d1').on('click', function(){
+$('#output').val(
+    function(index, value){
+        return value.substr(0, value.length - 1);
+});
+
+nums[i]=nums[i].substring(0, nums[i].length - 1);;
+ });
+ 
+ $('#b_res').on('click', function(){
+
+ sum=0;
+
+
+$.each(nums, function (index, value) {
+
+if(value.indexOf("+-")>-1){
+valg= value.slice(2);
+valg=parseFloat(valg);
+sum=sum+valg;
+}
+
+ if(value.indexOf('*')>-1){
+valg= value.slice(1);
+val=parseFloat(valg);
+sum=sum*val;
+}
+if(value.indexOf('/')>-1){
+valg= value.slice(1);
+val=parseFloat(valg);
+sum=sum/val;
+}
+
+if(value.indexOf("-")>0){
+valg= value.slice(3);
+valg=parseFloat(value);
+sum=sum+valg;
+}
+
+if(value.indexOf("-")>-1){
+valg=parseFloat(value);
+sum=sum+valg;
+}
+
+if(value.indexOf('+')>-1){
+valg= value.slice(1);
+val=parseFloat(valg);
+sum=sum+val;
+}
+});
+
+
+nums.length=0;
+i=0;
+$('#output').val(sum);
+if(sum<0){
+nums[i]=""+sum;
+}else if (sum>=0){
+nums[i]="+"+sum;
+}
+
+
+ });
+ });
   </script>
 </head>
 <body>
-  <div class="calc">
-  <form name="calculator"><p id="text11">Калькулятор
-   <input type="text" name="f" size="30"> 
+  <fieldset>
+ <legend> Калькулятор </legend>
+   <input type="text" name="f" size="30" id="output"> 
 
    <button name="delete1" id="d1">>></button>
    <button name="reset" id="reset">C</button>
@@ -22,26 +199,30 @@
   <button name="button_sum" id="b_sum">+</button>
    <br>
   <button name="button_num_4" id="b_n4">4</button>
-  <button name="button_num_5" id="b_n2">5</button>
-  <button name="button_num_6" id="b_n3">6</button>
+  <button name="button_num_5" id="b_n5">5</button>
+  <button name="button_num_6" id="b_n6">6</button>
   <button name="button_diff" id="b_dif">-</button>
    <br>
   <button name="button_num_7" id="b_n7">7</button>
   <button name="button_num_8" id="b_n8">8</button>
   <button name="button_num_9" id="b_n9">9</button>
-  <button name="button_sum" id="b_sum">*</button>
+  <button name="button_sum" id="b_mult">*</button>
    <br>
   <button name="button_num_0" id="b_n0">0</button>
   <button name="button_point" id="b_p">.</button>
   <button name="button_dec" id="b_dec">/</button> 
 	 <br>
    <button name="button_result" id="b_res">=</button>  
-    </form>
-  </div>
+  </fieldset>
 
- </p> 
+
+
  <style>
-
+  fieldset {
+  border-radius: 4px;
+  width: 100px;
+  height: 100 px;
+  }
  </style>
 </body>
 </html>

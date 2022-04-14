@@ -4,49 +4,251 @@
   <meta charset="utf-8">
   <title>lab_2-6</title>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script type="text/javascript">
-   $(document).on('keydown', function() {
-       if (event.keyCode == 37) {
-        $("#img1").animate({left:"-=100"}, 1200)		
-    }
-    if (event.keyCode == 38) {
-		 $("#img1").animate({top:"-=100"}, 1200)
-    }
-    if (event.keyCode == 39) {
-	    $("#img1").animate({left:"+=100"}, 1200)
-    }
-    if (event.keyCode == 40) {
-	   $("#img1").animate({top:"+=100"}, 1200)
-    }
-  });
-  </script>
-</head>
-<body>
 
-		<div id="container">
-			<div id="header">
-				<h1>jQuery Poll Demo</h1>
-				<h2>Because reloading the page is not in <em>style</em></h2><br /><hr />
-			</div>
-			<div id="left">
-				<div id="poll-container">
-					<h3>Poll</h3>
-					<form id='poll' action="poll.php" method="post" accept-charset="utf-8">
-						<p>Pick your favorite Javascript framework:</p><p>
-						<input type="radio" name="poll" value="opt1" id="opt1" /><label for='opt1'>&nbsp;jQuery</label><br />
-						<input type="radio" name="poll" value="opt2" id="opt2" /><label for='opt2'>&nbsp;Ext JS</label><br />
-						<input type="radio" name="poll" value="opt3" id="opt3" /><label for='opt3'>&nbsp;Dojo</label><br />
-						<input type="radio" name="poll" value="opt4" id="opt4" /><label for='opt4'>&nbsp;Prototype</label><br />
-						<input type="radio" name="poll" value="opt5" id="opt5" /><label for='opt5'>&nbsp;YUI</label><br />
-						<input type="radio" name="poll" value="opt6" id="opt6" /><label for='opt6'>&nbsp;mootools</label><br /><br />
-						<input type="submit" value="Vote &rarr;" /></p>
-					</form>
-				</div>
-			</div>
-		</div>
+<style>
+ #finish {
+  background-color: white; 
+  color: black;
+ }
+fieldset {
+  background-color: 5af99a;
+  font-size:16px; 
+  padding:12px; 
+  width:550px;
 
- <style>
+}
 
- </style>
-</body>
+legend {
+  background-color: lightblue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: solid grey 2px;
+}
+
+input {
+  margin: 5px;
+  
+}
+  fieldset {
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: solid black 2px;
+  border-radius: 7px;
+  background-color: #DDDDDD;
+  }
+  </style>
+ </head>
+ <body>
+ <fieldset>
+ <legend> Опрос</legend>
+ <fieldset class="pol">
+ <legend> Пол </legend>
+ <input type="radio" id="p1" class="com"
+     name="pol" value="Men">
+    <label for="p1">Мужской</label>
+
+    <input type="radio" id="p2" class="com"
+     name="pol" value="Women">
+    <label for="p2">Женский</label>
+</fieldset>
+
+ <fieldset class="age">
+ <legend> Возраст, лет </legend>
+ <input type="radio" id="a1" class="com"
+     name="age" value="New">
+    <label for="a1">18-35</label>
+
+    <input type="radio" id="a2" class="com"
+     name="age" value="Sred">
+    <label for="a2">35-55</label>
+	
+	<input type="radio" id="a3" class="com"
+     name="age" value="Old">
+    <label for="a3">55 ...</label>
+  </fieldset>
+  
+   <fieldset class="weigth">
+ <legend> Вес, кг </legend>
+ <input type="radio" id="w1" class="com"
+     name="weigth" value="New">
+    <label for="w1"> ... 50</label>
+
+    <input type="radio" id="w2" class="com"
+     name="weigth" value="Sred">
+    <label for="w2">50-90</label>
+	
+	<input type="radio" id="w3" class="com"
+     name="weigth" value="Old">
+    <label for="w3">90 ...</label>
+  </fieldset>
+  
+    <fieldset class="rost">
+ <legend> Рост, см </legend>
+ <input type="radio" id="r1" class="com"
+     name="rost" value="New">
+    <label for="r1"> ... 150</label>
+
+    <input type="radio" id="r2" class="com"
+     name="rost" value="Sred">
+    <label for="r2">150-185</label>
+	
+	<input type="radio" id="r3" class="com"
+     name="rost" value="Old">
+    <label for="r3">185 ...</label>
+  </fieldset>
+  
+  <center><button id='finish'> 	Закончить/Новый опрос</button>  </center>
+  </fieldset>
+  
+ <fieldset >
+  <legend> Вывод </legend>
+  <fieldset>
+   <legend> Пол </legend>
+  <p id="pm">///</p>
+  <p id="pw">///</p>
+   </fieldset>
+    <fieldset>
+	 <legend> Возраст, лет </legend>
+  <p id="a11">///</p>
+  <p id="a12">///</p>
+  <p id="a13">///</p>
+   </fieldset>
+   
+    <fieldset>
+	 <legend> Вес, кг </legend>
+  <p id="w11">///</p>
+  <p id="w12">///</p>
+  <p id="w13">///</p>
+   </fieldset>
+   
+    <fieldset>
+	 <legend> Рост, см </legend>
+  <p id="r11">///</p>
+  <p id="r12">///</p>
+  <p id="r13">///</p>
+   </fieldset>
+   
+    <p id="user">///</p>
+   
+   </fieldset>
+
+ <script type="text/javascript">
+ 
+$(document).ready(function(){
+$('#finish').prop('disabled',true);
+
+
+let i=0;
+let users=1;
+let p1=0;
+let p2=0;
+let a1=0;
+let a2=0;
+let a3=0;
+let w1=0;
+let w2=0;
+let w3=0;
+let r1=0;
+let r2=0;
+let r3=0;
+
+
+$('#p1').change(function() {
+p1++;
+
+   $('.pol').attr('disabled', true);
+ 
+});
+
+$('#p2').change(function() {
+p2++;
+
+   $('.pol').attr('disabled', true);
+});
+
+$('#a1').change(function() {
+a1++;
+$('.age').attr('disabled', true);
+});
+
+$('#a2').change(function() {
+a2++;
+$('.age').attr('disabled', true);
+});
+
+$('#a3').change(function() {
+a3++;
+$('.age').attr('disabled', true);
+});
+
+$('#w1').change(function() {
+w1++;
+$('.weigth').attr('disabled', true);
+});
+
+$('#w2').change(function() {
+w2++;
+$('.weigth').attr('disabled', true);
+});
+
+$('#w3').change(function() {
+w3++;
+$('.weigth').attr('disabled', true);
+});
+
+$('#r1').change(function() {
+r1++;
+$('.rost').attr('disabled', true);
+});
+
+$('#r2').change(function() {
+r2++;
+$('.rost').attr('disabled', true);
+});
+
+$('#r3').change(function() {
+r3++;
+$('.rost').attr('disabled', true);
+});
+
+$('.com').change(function() {
+
+$("#pm").text("Мужчин: " + p1/users*100 + "%");
+$("#pw").text("Женщин: " + p2/users*100 + "%");
+$("#a11").text("18-35: " + a1/users*100 + "%");
+$("#a12").text("35-55: " + a2/users*100 + "%");
+$("#a13").text("55 ...: " + a3/users*100 + "%");
+$("#w11").text("... 50: " + w1/users*100 + "%");
+$("#w12").text("50-90: " + w2/users*100 + "%");
+$("#w13").text("90 ...: " + w3/users*100 + "%");
+$("#r11").text("... 150: " + r1/users*100 + "%");
+$("#r12").text("150-185: " + r2/users*100 + "%");
+$("#r13").text("185 ...: " + r3/users*100 + "%");
+$("#user").text("Количество проголосовавших: " + users );
+
+i++;
+
+if (i==4){
+$('#finish').prop('disabled',false);
+}else{
+$('#finish').prop('disabled',true);
+}
+});
+
+
+$('#finish').on('click', function(){
+users++;
+i=0;
+$('#finish').prop('disabled',true);
+$('.com').prop('checked',false);
+$('.pol').attr('disabled', false);
+$('.age').attr('disabled', false);
+$('.weigth').attr('disabled', false);
+$('.rost').attr('disabled', false);
+ });
+ });
+ </script>
+ </body>
 </html>
