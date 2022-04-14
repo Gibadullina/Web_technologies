@@ -1,0 +1,149 @@
+<?php
+/**
+ * @file
+ * Простой виджет для голосования +1.
+ */
+ 
+/**
+ * Реализация hook_permission().
+ */
+function plusone_permission() {
+	$perms = array(
+		'rate content' => array(
+			'title' => t('Rate content'),
+		),
+	);
+	
+	return $perms;
+}
+
+/**
+ * Реализация hook_menu().
+ */
+function plusone_menu() {
+	$items['plusone/vote'] = array(
+		'title' => 'Vote',
+		'page callback' => 'plusone_vote',
+		'access arguments' => array('rate content'),
+		'type' => MENU_CALLBACK,
+	);
+	
+	return $items;
+}
+
+/**
+ * Callback-функция.
+ *
+ * @param $nid
+ *   ID ноды.
+ */
+function plusone_vote($nid) {
+	global $user;
+	$nid = (int)$nid;
+	
+	$is_author = db_query('SELECT uid FROM {node} WHERE nid = :nid AND uid = :uid',
+							array(':nid' => $nid, ':uid' => $user->uid))->fetchField();
+	
+	// Авторы не могут голосовать за собственные ноды.
+	// Проверяем таблицу node, чтобы посмотреть, не является
+	// ли пользователь автором сообщения.
+	if ($nid > 0 && !$is_author) {
+		$vote_count = plusone_get_vote($nid, $user->uid);
+		if (!$vote_count) {
+			db_delete('plusone_votes')
+				->condition('uid', $user->uid)
+				->condition('nid', $nid)
+				->execute();
+			db_insert('plusone_votes')
+				->fields(array(
+					'uid' => $user->uid,
+					'nid' => $nid,
+					'vote_count' => $vote_count + 1,
+				))
+				->execute();
+		}
+	}
+    $total_votes = plusone_get_total($nid);
+    // Проверка того, выполнен ли вызов с помощью jQuery. Вызов AJAX использует
+    // метод POST и передает пару "ключ/значение" вида js = 1.
+    if (!empty($_POST['js'])) {
+        // drupal_json() используется в Drupal 6.
+        // Заменяем на функцию drupal_json_output().
+        drupal_json_output(array(
+            'total_votes' => $total_votes,
+            'voted' => t('You voted'),
+            )
+        );
+        exit();
+    }
+    
+	$path = drupal_get_path_alias('node/' . $nid);
+	drupal_goto($path);
+}
+
+/**
+ * Возврат числа голосов для данной пары идентификатор ноды/идентификатор пользователя.
+ *
+ * @param $nid
+ *   ID ноды.
+ * @param $uid
+ *   ID пользователя.
+ */
+function plusone_get_vote($nid, $uid) {
+	return (int)db_query('SELECT vote_count FROM {plusone_votes} WHERE nid = :nid AND uid = :uid',
+						array(':nid' => $nid, ':uid' => $uid))->fetchField();
+}
+
+/**
+ * Возврат общего числа голосов для данной ноды.
+ *
+ * @param $nid
+ *   ID ноды.
+ */
+function plusone_get_total($nid) {
+	return (int)db_query('SELECT SUM(vote_count) FROM {plusone_votes} WHERE nid = :nid', array(':nid' => $nid))->fetchField();
+}
+
+/**
+ * Загрузка значений, необходимых для работы виджета,
+ * и вывод виджета ври вызове функции hook_node_view().
+ */
+function plusone_node_view($node, $view_mode) {
+	global $user;
+	
+	$total = plusone_get_total($node->nid);
+	$is_author = db_query('SELECT uid FROM {node} WHERE nid = :nid AND uid = :uid',
+							array(':nid' => $node->nid, ':uid' => $user->uid))->fetchField();
+	
+	if ($is_author) {
+		$is_author = TRUE;
+	} else {
+		$is_author = FALSE;
+	}
+	
+	$voted = plusone_get_vote($node->nid, $user->uid);
+	
+	if ($view_mode == 'full') {
+		drupal_add_js(drupal_get_path('module', 'plusone') . '/plusone.js');
+		drupal_add_css(drupal_get_path('module', 'plusone') . '/plusone.css');
+		$node->content['plusone_vote'] = array(
+			'#markup' => theme('plusone_widget', array('nid' => $node->nid,
+								'total' => $total, 'is_author' => $is_author, 'voted' => $voted)),
+			'#weight' => 100,
+		);
+
+		return $node;
+	}
+}
+
+/**
+ * Реализация hook_theme().
+ */
+function plusone_theme() {
+	return array(
+		'plusone_widget' => array(
+			'arguments' => array('nid', 'total', 'is_author', 'voted'),
+			'template' => 'plusone-widget',
+		),
+	);
+}

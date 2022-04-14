@@ -2,8 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>lab_2-3</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>lab_2-6</title>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script type="text/javascript">
    $(document).on('keydown', function() {
@@ -23,21 +22,31 @@
   </script>
 </head>
 <body>
-<p id="text1">Нажимайте на стрелочки на вашей клавиатуре</p>
- <img id="img1" src="img/image1.jpg" >
- </p> 
+
+		<div id="container">
+			<div id="header">
+				<h1>jQuery Poll Demo</h1>
+				<h2>Because reloading the page is not in <em>style</em></h2><br /><hr />
+			</div>
+			<div id="left">
+				<div id="poll-container">
+					<h3>Poll</h3>
+					<form id='poll' action="poll.php" method="post" accept-charset="utf-8">
+						<p>Pick your favorite Javascript framework:</p><p>
+						<input type="radio" name="poll" value="opt1" id="opt1" /><label for='opt1'>&nbsp;jQuery</label><br />
+						<input type="radio" name="poll" value="opt2" id="opt2" /><label for='opt2'>&nbsp;Ext JS</label><br />
+						<input type="radio" name="poll" value="opt3" id="opt3" /><label for='opt3'>&nbsp;Dojo</label><br />
+						<input type="radio" name="poll" value="opt4" id="opt4" /><label for='opt4'>&nbsp;Prototype</label><br />
+						<input type="radio" name="poll" value="opt5" id="opt5" /><label for='opt5'>&nbsp;YUI</label><br />
+						<input type="radio" name="poll" value="opt6" id="opt6" /><label for='opt6'>&nbsp;mootools</label><br /><br />
+						<input type="submit" value="Vote &rarr;" /></p>
+					</form>
+				</div>
+			</div>
+		</div>
+
  <style>
- #img1{
- height:260px;
- width:240px;
- position:absolute;
-	left:450px;
-	top:140px;
- }
- #text1 {
- color: grey;
- font-family: Verdana, Arial, Helvetica, sans-serif;
- }
+
  </style>
 </body>
 </html>
