@@ -40,7 +40,9 @@
           console.log(33);
           // Если поле пустое добавляем класс-указание
           $("#ml").addClass('empty_field');
-        }
+         }
+         
+        
       });
     });
 
@@ -49,6 +51,10 @@
      body {
     background-color: rgb(212, 231, 238);
     }
+     textarea.empty_field {
+      border-width: 2px;
+      border-color: red;
+     }
     .form_box input.empty_field {
       border-width: 2px;
       border-color: red;
@@ -84,6 +90,10 @@
      #capcha {
     width: 100px;
     }
+    #letter {
+     height: 150px;
+     
+    }
  
   </style>
 </head>
@@ -101,8 +111,9 @@
 	 <br> Ваш e-mail:
 	 <input class="rfield" id="ml"  type="text" name="e" size="35" >
 	 <br> Текст сообщения:<br>
-	 <textarea class="rfield" id="letter" name="text"  cols="33" rows="8"></textarea>
-	 <br>
+	<!-- <input type="text" class="rfield" id="letter" name="text"  cols="33" rows="8"></textarea>-->
+<textarea class="rfield" id="letter" name="text"  cols="33" rows="8"></textarea>	
+ <br>
           <br> Введите код с картинки:
 	 <input class="rfield" id="capcha"  type="text" name="e" size="10" >
          <?
