@@ -1,17 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ntcn</title>
-    <style>
-
-    </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script>
-        
-    </script>
-</head>
-<body>
-
-</body>
-</html>
+<?php
+// Кол-во элементов на странице
+$limit = 3; 
+ 
+// Подключение к БД
+$dbh = new PDO('mysql:dbname=db_name;host=localhost', 'логин', 'пароль');
+ 
+// Получение записей для текущей страницы
+$page = intval(@$_GET['page']);
+$page = (empty($page)) ? 1 : $page;				
+$start = ($page != 1) ? $page * $limit - $limit : 0;
+$sth = $dbh->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM `prods` LIMIT {$start}, {$limit}");
+$sth->execute();	
+$items = $sth->fetchAll(PDO::FETCH_ASSOC);				
+ 
+// Узнаем сколько всего записей в БД 
+$sth = $dbh->prepare("SELECT FOUND_ROWS()");
+$sth->execute();
+$total = $sth->fetch(PDO::FETCH_COLUMN);
+$amt = ceil($total / $limit);	
+?>
+	
+<div id="showmore-list">
+	<div class="prod-list">
+		<?php foreach ($items as $row): ?>
+		<div class="prod-item">
+			<div class="prod-item-img">
+				<img src="/images/<?php echo $row['img']; ?>" alt="">	
+			</div>
+			<div class="prod-item-name">
+				<?php echo $row['name']; ?>		
+			</div>
+		</div>
+		<?php endforeach; ?>
+	</div>
+</div>
+ 
+<div class="showmore-bottom">
+	<a data-page="<?php echo $page; ?>" data-max="<?php echo $amt; ?>" id="showmore-button" href="#">Показать еще</a>
+</div>
+ 
+<script src="/jquery/2.1.1/jquery.min.js"></script>
+ 
+<script>
+$(function(){
+	$('#showmore-button').click(function (){
+		// Селектор контейнера с записями
+		var selector = '#showmore-list .prod-list'; 
+ 
+		var $target = $(this);
+		var page = $target.attr('data-page');	
+		page++;
+ 
+		$.ajax({ 
+			url: '?page=' + page,  
+			dataType: 'html',
+			success: function(data){
+				$(selector).append($(data).find(selector).html());
+			}
+		});
+ 
+		$target.attr('data-page', page);
+		if (page ==  $target.attr('data-max')) {
+			$target.hide();
+		}		
+ 
+		return false;
+	});
+});
+</script>

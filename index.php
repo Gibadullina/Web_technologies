@@ -22,3 +22,11 @@
  <li><a href="lab-2/lab_2-6.html">Задание 6</a></li>
  <li><a href="lab-2/lab_2-7.html">Задание 7</a></li>
  </ul>
+ Лабораторная работа № 3
+    <ul>
+	 <li><a href="lab-2/test.html">Тест</a></li>
+ <li><a href="lab3/lab2.html">Пример</a></li>	 
+ <li><a href="lab3/3.html">Задание 1</a></li>
+ <li><a href="lab3/3b.html">Задание 2</a></li>
+
+ </ul>
