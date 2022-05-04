@@ -58,8 +58,9 @@
             foreach($newsData as $oneNews): 
         ?>
         <div class="news1">
-            <b><?=$oneNews['title'];?></b>
-            <p><?=$oneNews['big_text'];?></p>
+            <img src="<?php echo $oneNews['pic']; ?>" alt="">
+			<b><?=$oneNews['title'];?></b>
+			
         </div>
         <?php endforeach; ?>
     </div>
@@ -69,18 +70,31 @@
 	p {
 	color: grey;	
 	}
-	.news1 {
-		width: 200px;
-        background: #fc0;
-        padding: 5px;
-        border: solid 1px black;
-        float: left;
-        top: 40px;
-		position: relative;	
-        left: -70px;
-	}
+
 	#show_more {
 	position: relative;	
+	border-radius: 10%;
+	}
+	img {
+	width: 100px;
+    top: -500px;
+    left: 800px;	
+	}
+
+	body {
+      margin: 10px auto;
+      width: 1470px;
+	  background-color: grey;
+    }
+    p {
+      margin: 10px auto;
+      padding: 0 0 .5em;
+    }
+	.news1 {
+	text-align: left;
+	margin: 10px auto;
+	background-color: lightgrey;
+	width: 100px;
 	}
 	</style>
 </body>
