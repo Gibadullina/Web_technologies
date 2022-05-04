@@ -25,8 +25,10 @@ if(empty($newsData)){
     foreach($newsData as $oneNews){
         $html .= "
             <div class=news1>
+	            <img src=\""+$oneNews['pic']+"\" alt="">
                 <b>{$oneNews['title']}</b>
-                <p>{$oneNews['big_text']}</p>
+                <p>{$oneNews['pic']}</p>
+				<p>{$oneNews['big_text']}</b>
             </div>
         ";
     }

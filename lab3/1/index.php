@@ -60,6 +60,7 @@
         <div class="news1">
             <img src="<?php echo $oneNews['pic']; ?>" alt="">
 			<b><?=$oneNews['title'];?></b>
+			<p><?=$oneNews['big_text'];?></b>
 			
         </div>
         <?php endforeach; ?>
@@ -67,9 +68,6 @@
      
     <input id="show_more" count_show="5" count_add="5" type="button" value="Показать еще" />
 	<style>
-	p {
-	color: grey;	
-	}
 
 	#show_more {
 	position: relative;	
@@ -78,23 +76,26 @@
 	img {
 	width: 100px;
     top: -500px;
-    left: 800px;	
+    left: 80px;	
+	vertical-align: top;
 	}
 
 	body {
       margin: 10px auto;
-      width: 1470px;
+      width: -4470px;
 	  background-color: grey;
     }
     p {
       margin: 10px auto;
       padding: 0 0 .5em;
+	  color: grey;
     }
 	.news1 {
 	text-align: left;
 	margin: 10px auto;
 	background-color: lightgrey;
-	width: 100px;
+	width: 500px;
+	border:  thick double grey;
 	}
 	</style>
 </body>
