@@ -61,7 +61,6 @@
         </div>
         <?php endforeach; ?>
     </div>
-     
     <input id="show_more" count_show="5" count_add="5" type="button" value="Показать еще" />
 	<style>
     #titli {
