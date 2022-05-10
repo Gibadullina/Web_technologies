@@ -7,7 +7,7 @@
   <script type="text/javascript">
 
   $('document').ready(function() {
-    $('#button').on('click', function() {
+    $('#button1').on('click', function() {
       $('.form_box .rfield').each(function() {
         if ($(this).val() != '') {
           console.log(32);
@@ -76,6 +76,8 @@
             });
              
         });
+	//-----------------------------------------------------------------------------	
+		
   </script>
     <style type="text/css">
      body {
@@ -110,7 +112,7 @@
       outline: none;
       border-color: #07a6e6;
     }
-      #button {
+      #button1 {
      width: 260px;  
    }
      #ava {
@@ -164,7 +166,7 @@
 	<!-- <input type="text" class="rfield" id="letter" name="text"  cols="33" rows="8"></textarea>-->
 <textarea class="rfield" id="letter" name="text"  cols="33" rows="8"></textarea>	
  <br>
-     <input type="button" id="button" value="Отправить" >
+     <input type="button" id="button1" value="Отправить" >
    </form> 
  </div>
  
