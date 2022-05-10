@@ -25,7 +25,7 @@
             if(data.result == "success"){
                 $('#content').append(data.html);
                     btn_more.val('Показать еще');
-                    btn_more.attr('count_show', (count_show+3));
+                    btn_more.attr('count_show', (count_show+5));
             }else{
                 btn_more.val('Больше нечего показывать');
             }
@@ -38,7 +38,7 @@
      
 </head>
 <body>
-    <p id="titli"> Hovostи</p>
+    <i><h1 id="titli"> Hovostи</h1></i>
     <div id="content">
         <?php
             // выведем в самом начале 5 статей
@@ -56,7 +56,7 @@
         <div class="news1">
             <img src="<?php echo $oneNews['pic']; ?>" alt="">
 			<b><?=$oneNews['title'];?></b>
-			<p><?=$oneNews['big_text'];?></b>
+			<p><?=$oneNews['big_text'];?></p>
 			
         </div>
         <?php endforeach; ?>
@@ -69,14 +69,19 @@
   	width: 100px;
     top: -500px;
     left: 80px;	
+	margin: 10px auto;
 	}
 	
 	#show_more {
-		
+	background-color: grey;
+	color: lightgrey;
 	position: relative;	
 	width: 20%;
     top: 10px;
     left: 420px;
+	border-color: white;
+	font-family: Tahoma;
+	font-size: 14px;
 	}
 	img {
 	width: 100px;
@@ -91,7 +96,7 @@
 	  background-color: grey;
     }
     p {
-      margin: 10px auto;
+      margin: 10px 10px auto;
       padding: 0 0 .5em;
 	  color: grey;
     }
