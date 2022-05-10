@@ -1,13 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Кнопка "Показать еще" на ajax</title>
+    <title>Новости</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"  type="text/javascript"></script>
-     
-    <style>   
-     
-    </style>
-     
     <script>
         $(document).ready(function(){
          
@@ -43,6 +38,7 @@
      
 </head>
 <body>
+    <p id="titli"> Hovostи</p>
     <div id="content">
         <?php
             // выведем в самом начале 5 статей
@@ -68,10 +64,19 @@
      
     <input id="show_more" count_show="5" count_add="5" type="button" value="Показать еще" />
 	<style>
-
+    #titli {
+	color: black;	
+  	width: 100px;
+    top: -500px;
+    left: 80px;	
+	}
+	
 	#show_more {
+		
 	position: relative;	
-	border-radius: 10%;
+	width: 20%;
+    top: 10px;
+    left: 420px;
 	}
 	img {
 	width: 100px;
