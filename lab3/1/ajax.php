@@ -23,14 +23,15 @@ if(empty($newsData)){
     // и отдадим их клиенту
     $html = "";
     foreach($newsData as $oneNews){
+   $c1 .='<img src="'.$oneNews['pic'].'" div="">';
         $html .= "
             <div class=news1>
-	            <img src=\""+$oneNews['pic']+"\" alt="">
-                <b>{$oneNews['title']}</b>
-                <p>{$oneNews['pic']}</p>
+                ".$c1."			
+	            <b>{$oneNews['title']}</b>
 				<p>{$oneNews['big_text']}</b>
             </div>
         ";
+		$c1='';
     }
     echo json_encode(array(
         'result'    => 'success',
