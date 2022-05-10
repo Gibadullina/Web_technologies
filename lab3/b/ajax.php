@@ -6,7 +6,7 @@ $startIndex = (int)$_POST['count_show']; // с какой записи нача�
  
 // запрос к бд
 $sql = mysqli_query($db_connect,"
-    SELECT * FROM `tbl_comm` LIMIT $startIndex, $countView
+    SELECT * FROM `tbl_comm` ORDER BY  `Time_comm` DESC LIMIT $startIndex, $countView
 ") or die(mysqli_error());
 $commData = array();
 while($result = mysqli_fetch_array($sql)){
@@ -27,7 +27,7 @@ if(empty($commData)){
         $html .= "
             <div class=comm1>
                 ".$c1."			
-			<b>{$oneComm['Name_comm']}</b>
+			Написал(а): <b>{$oneComm['Name_comm']}</b>
 			<p>{$oneComm['Time_comm']}</p>
              <p>{$oneComm['Text_comm']}</p>
             </div>

@@ -79,6 +79,7 @@
   </script>
     <style type="text/css">
      body {
+		 
     background-color: rgb(212, 231, 238);
     }
      textarea.empty_field {
@@ -141,6 +142,8 @@
 	font-family: Tahoma;
 	font-size: 14px;
 	color: grey;
+	position: relative;
+	margin-bottom: 10px;
 	}
   </style>
 </head>
@@ -168,12 +171,13 @@
  <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,-->
     <div id="content">
 	 <i><h1 id="titli">Комментарии</h1></i>
+	  	 <input id="show_more" count_show="3" count_add="5" type="button" value="Показать еще" />
         <?php
             // выведем в самом начале 5 комментов
             include "db.php";
              
             $sql = mysqli_query($db_connect,"
-                SELECT * FROM tbl_comm LIMIT 5 
+                SELECT * FROM tbl_comm ORDER BY  `Time_comm` DESC LIMIT 3 
             ") or die(mysqli_error());
             $commData = array();
             while($result = mysqli_fetch_array($sql)){
@@ -183,13 +187,13 @@
         ?>
         <div class="comm1">
             <img src="<?php echo $oneComm['pic']; ?>" alt="">
-			<b><?=$oneComm['Name_comm'];?></b>
+			Написал(а): <b><?=$oneComm['Name_comm'];?></b>
 			<p><?=$oneComm['Time_comm'];?></p>
 			<p><?=$oneComm['Text_comm'];?></p>
-			
+		
         </div>
         <?php endforeach; ?>
-		    <input id="show_more" count_show="5" count_add="5" type="button" value="Показать еще" />
+		  
     </div>     
 
   </div>
