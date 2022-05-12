@@ -25,6 +25,6 @@
  Лабораторная работа № 3
     <ul> 
  <li><a href="lab3/a">Задание 1</a></li>
- <li><a href="lab3/b">Задание 2</a></li>
+ <li><a href="lab3/b/3b.php">Задание 2</a></li>
 
  </ul>
