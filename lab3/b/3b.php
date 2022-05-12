@@ -11,7 +11,7 @@
             var form_data = $(this).serialize(); // Собираем все данные из формы
             $.ajax({
                 type: "POST", // Метод отправки
-                url: "public/script/send.php", // Путь до php файла отправителя
+                url: "send.php", // Путь до php файла отправителя
                 data: form_data,
                 success: function (data) {
                     // Код в этом блоке выполняется при успешной отправке сообщения
