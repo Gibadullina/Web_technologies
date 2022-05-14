@@ -19,6 +19,28 @@
 				  	
                 }
             });
+		var show = 0;
+        var add  = 1;   
+        var count_show = parseInt($('#show_more').attr('count_show'));		
+        $.ajax({
+                    url: "ajax.php", // куда отправляем
+                    type: "post", // метод передачи
+                    dataType: "json", // тип передачи данных
+                    data: { // что отправляем
+                        "count_show":  show,
+                        "count_add":    add
+                    },
+                    // после получения ответа сервера
+                    success: function(data){
+            if(data.result == "success"){
+                $('.c').prepend(data.html);
+				$('#show_more').attr('count_show',(count_show+1));
+            }else{
+                alert("Ошибка загрузки комментариев");
+            }
+                    }
+                });
+				$("#form1")[0].reset();
         });
     });   
      
@@ -52,6 +74,30 @@
             });
              
         });
+		
+		        $(document).ready(function(){
+        var count_show = 0;
+        var count_add  = 3;        
+        $.ajax({
+                    url: "ajax.php", // куда отправляем
+                    type: "post", // метод передачи
+                    dataType: "json", // тип передачи данных
+                    data: { // что отправляем
+                        "count_show":   count_show,
+                        "count_add":    count_add
+                    },
+                    // после получения ответа сервера
+                    success: function(data){
+            if(data.result == "success"){
+                $('#content').append(data.html);
+            }else{
+                alert("Ошибка загрузки комментариев");
+            }
+                    }
+                });
+         
+             
+        });
 	//-----------------------------------------------------------------------------	
 		
   </script>
@@ -82,9 +128,10 @@
     <div id="content">
 	 <i><h1 id="titli">Комментарии</h1></i>
 	  	 <input id="show_more" count_show="3" count_add="5" type="button" value="Показать еще" />
+		 <div class="c"></div>
        <?php
             // выведем в самом начале 5 комментов
-            include "db.php";
+           /* include "db.php";
              
             $sql = mysqli_query($db_connect,"
                 SELECT * FROM tbl_comm ORDER BY  `Time_comm` DESC LIMIT 3 
@@ -93,17 +140,8 @@
             while($result = mysqli_fetch_array($sql)){
                 $commData[] = $result;
             }           
-            foreach($commData as $oneComm): 
-        ?>
-        <div class="comm1">
-            <img src="<?php echo $oneComm['pic']; ?>" alt="">
-			Написал(а): <b><?=$oneComm['Name_comm'];?></b>
-			<p><?=$oneComm['Time_comm'];?></p>
-			<p><?=$oneComm['Text_comm'];?></p>
-		
-        </div>
-        <?php endforeach; ?>
-		  
+            foreach($commData as $oneComm): */
+        ?>	  
     </div>     
 
   </div>
