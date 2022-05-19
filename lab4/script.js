@@ -1,11 +1,4 @@
 $( function() {
-	$("#select").selectmenu({
-						        <option>Фасилиск</option>
-				                <option>Грифон</option>
-				                <option>Цербер</option>
-				                <option>Пони</option>
-				                <option>Осел</option>
-	});
     $( "#accordion" ).accordion();
     $( "#accordion1" ).accordion({
         autoHeight: false
