@@ -7,6 +7,7 @@ const validText = document.querySelector(".invalid")
 const audioWin = document.getElementById("win")
 const audioDraw = document.getElementById("draw")
 const bt1 = document.querySelectorAll(".bt1")
+const bt2 = document.querySelectorAll(".bt2")
 const defaultBoardSize = 400
 
 let step = 1
@@ -16,14 +17,6 @@ input.value = 5
 
 canvas.width = canvas.height = defaultBoardSize
 
-for (let btn of bt1) {
-btn.addEventListener("click", function () {
-    if (setBoard) {
-      clear()
-    }
-	setBoard()
-  })
-}
 ///////////////////////////////////
 for (let btn of bt1) {
 btn.addEventListener("click", function () {
@@ -31,6 +24,19 @@ btn.addEventListener("click", function () {
       clear()
     }
 	setBoard()
+	startGame()
+  })
+}
+for (let btn of bt2) {
+btn.addEventListener("click", function () {
+    if (setBoard) {
+      clear()
+    }
+	setBoard()
+	startGame()
+     count1=0;
+     count2 =0;
+	 alert("Игрок х: "+count2+'Игрок о: '+count1);
   })
 }
 
@@ -59,6 +65,8 @@ function startGame() {
     checkWin(x, y)
   }
 }
+var count1=0;
+var count2 =0;
 
 function checkWin(x, y) {
   if (
@@ -67,6 +75,11 @@ function checkWin(x, y) {
     testWin(0, 1, 0, 1, x, y) == 4 ||
     testWin(1, 0, 1, 0, x, y) == 4
   ) {
+	  /////
+     if (arr[y][x]=="O") {
+		 count1++;
+	 } else { count2++;}
+	 /////
     showWinner(arr[y][x])
     canvas.onclick = function (event) {
       event.stopPropagation()
@@ -222,11 +235,13 @@ const modalEl = document.getElementById("modal")
 function showWinner(winner) {
   let header = modalEl.getElementsByTagName("h2")[0]
   header.textContent = `Победитель ${winner}`
+   alert("Игрок О: "+count1+" Игрок х: "+count2);
 }
 
 function showNoWin() {
   let header = modalEl.getElementsByTagName("h2")[0]
   header.textContent = `Победила дружба`
+   alert("Игрок О: "+count1+" Игрок х: "+count2);
 }
 
 validText.textContent = ""
