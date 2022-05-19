@@ -29,6 +29,7 @@
  </ul>
   Лабораторная работа № 4
     <ul> 
-  <li><a href="lab4/4_example.html">Пример fancyZoom</a></li>
- <li><a href="lab3/a">Задание 1</a></li>
- <li><a href="lab3/b/3b.php">Задание 2</a></li>
+  <li><a href="lab4/4_ex1.html">Пример fancyZoom</a></li>
+  <li><a href="lab4/4_ex2.html">Примеры JQuery UI</a></li>
+  <li><a href="lab4/4.html">Волшебный мир</a></li> 
+    </ul>

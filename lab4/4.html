@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic</title>
+
+    <link rel="stylesheet" href="ui/jquery-ui.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>
+            Окунись в фэнтезийный мир, путник!
+        </h1>
+        <h2>
+            Выбери свою судьбу
+        </h2>
+        <div id="tabs">
+            <ul>
+              <li><a href="#tabs-1">Эльф</a></li>
+              <li><a href="#tabs-2">Огр</a></li>
+              <li><a href="#tabs-3">Человек</a></li>
+            </ul>
+            <div id="tabs-1">
+                <img src="img/elf.jpg" width="200" height="200">
+                <p>
+                    <strong>Эльф</strong>
+                </p>
+                <div id="accordion">
+                    <h3>Характеристики</h3>
+                    <div>
+                      <ul>
+                          <li>Выносливость: 5</li>
+                          <li>Сила: 2</li>
+                          <li>Разум: 3</li>
+                          <li>Уровень HP: 100</li>
+                          <li>Уровень Маны: 200</li>
+                      </ul>
+                    </div>
+                    <h3>Описание</h3>
+                    <div>
+                      <p>
+                        Эльф - искусный маг.
+                      </p>
+                    </div>
+                </div>
+                <button id="createElf">Создать персонажа</button>
+            </div>
+            <div id="tabs-2">
+                <img src="img/ogr.jpg" width="200" height="200">
+                <p>
+                    <strong>Огр</strong>
+                </p>
+                <div id="accordion1">
+                    <h3>Характеристики</h3>
+                    <div>
+                      <ul>
+                          <li>Выносливость: 3</li>
+                          <li>Сила: 5</li>
+                          <li>Разум: 2</li>
+                          <li>Уровень HP: 200</li>
+                          <li>Уровень Маны: 100</li>
+                      </ul>
+                    </div>
+                    <h3>Описание</h3>
+                    <div>
+                      <p>
+                        Огр - сильный воин.
+                      </p>
+                    </div>
+                </div>
+                <button id="createOgr">Создать персонажа</button>
+            </div>
+            <div id="tabs-3">
+                <img src="img/human.jpg" width="200" height="200">
+                <p>
+                    <strong>Человек</strong>
+                </p>
+                <div id="accordion2">
+                    <h3>Характеристики</h3>
+                    <div>
+                      <ul>
+                          <li>Выносливость: 4</li>
+                          <li>Сила: 3</li>
+                          <li>Разум: 4</li>
+                          <li>Уровень HP: 150</li>
+                          <li>Уровень Маны: 100</li>
+                      </ul>
+                    </div>
+                    <h3>Описание</h3>
+                    <div>
+                      <p>
+                        Человек - homo sapiens.
+                      </p>
+                    </div>
+                </div>
+                <button id="createHuman">Создать персонажа</button>
+            </div>
+          </div>
+        
+          <div id="dialog-form" title="Создание персонажа">
+            <form>
+                <p id="heroInfo"></p>
+              <fieldset>
+                <label for="name">Имя персонажа</label>
+                <input type="text" title="Введите любое имя" name="name" id="name" class="text ui-widget-content ui-corner-all">
+                <label for="email">Ваш email</label>
+                <input type="text" title="Ваш почтовый ящик" name="email" id="email" class="text ui-widget-content ui-corner-all">
+                <label for="date">Дата рождения</label> 
+                <input type="date" title="Ваша дата рождения" name="date" id="date" class="text ui-widget-content ui-corner-all">
+                <p id="difficulty" title="Уровень сложности игры">Сложность игры: Легко</p>
+                <div id="slider">
+                    <div id="custom-handle" class="ui-slider-handle"></div>
+                </div>
+                				<label for="partner">Ваш спутник</label>
+								<select id="select" class="text ui-widget-content ui-corner-all"> 
+				                <option>Фасилиск</option>
+				                <option>Грифон</option>
+				                <option>Цербер</option>
+				                <option>Пони</option>
+				                <option>Осел</option>
+				                </select>
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" id = "button1" tabindex="-1" style="position:absolute; top:-1000px" class="ui-button ui-widget ui-state-default
+   ui-corner-all ui-button-text-only">
+              </fieldset>
+              
+            </form>
+          </div>
+    </div>
+
+    <div id="dialog-confirm" title="Создать персонажа?">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Вы все-таки решились посетить волшебный мир?</p>
+    </div>
+
+    <div id="dialog-ok" title="Информация">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Добро пожаловать!</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

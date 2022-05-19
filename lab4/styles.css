@@ -1,0 +1,19 @@
+.wrapper {
+    margin: 0 auto;
+    width: 70%;
+    border: 1px solid black;
+    min-height: 300px;
+    text-align: center;
+}
+
+.ui-accordion-header{
+    text-align: left;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
