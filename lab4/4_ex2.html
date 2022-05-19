@@ -46,7 +46,52 @@
            $("#date").datepicker({
 		   dateFormat: "dd.mm.yy" 
 		   });
+		   //Dialog
+		   $('#dialog').dialog({
+		   autoOpen: false
+		   }); 
+		   $('#open').click(function(){
+          $('#dialog').dialog('open');
+            }); 
+			//Эффекты анимации 
+			$(function(){
+       $('#dialog').dialog({
+          autoOpen: false,
+          show: { effect: "clip", duration: 800 },
+          hide: { effect: "drop", duration: 800 },
+           });
+          $('#open').click(function(){
+        $('#dialog').dialog('open');
+          });
+           });
+		   //selectmenu
+		   $("#select").selectmenu();
+           //selectmenu
+		   $('#menu').menu();	
+           //слайдер
     });
+	      		   $(function(){
+ $('#slider').slider({
+  range: true, // используем диапазон
+  min: 0, // минимальное значение
+  max: 1000, // максимальное значение
+  step: 10, // шаг изменения значения
+  values: [50, 500], // начальные значения
+  slide: function(event, ui){ // callback функция при изменении диапазона
+ $('#start').val(ui.values[0]);
+ $('#end').val(ui.values[1]);
+  }
+ });
+ // записываем стартовые значения диапазона в соответствующие поля
+ $('#start').val($('#slider').slider('values', 0));
+ $('#end').val($('#slider').slider('values', 1));
+});
+          $(function(){
+          $('#tabs').tabs({ show: { effect: "fade",
+          duration: 300 }, hide: { effect: "fade",
+         duration: 300 },
+          });
+           }); 
   </script>
 </head>
 <body>
@@ -91,6 +136,86 @@
 </div>
       </br>
 	   <!--Диалоговое окно-->
-	   
+	   <button class="btn btn-success" id="open">Открыть окно</button> 
+	    </br>
+	   <div id="dialog">
+     <p>Это диалоговое окно...</p>
+      </div>
+      </br>
+	   <!--Выпад список-->	  
+	   <select id="select"> 
+	   <option>Кошечка  1</option>
+	   <option>Кошечка  2</option>
+	   <option>Кошечка  3</option>
+	   <option>Кошечка  4</option>
+	   <option>Кошечка  5</option>
+	   </select>
+	         
+	   <!--меню-->
+	    </br><ul id="menu">
+	      <li><div><a href="#">Books</a></div></li>
+	      <li><div><a href="#">Clothing</a></div></li>
+	      <li><div><a href="#">Electronics</a></div>
+	     <ul>
+	      <li><div><a href="#">Car Hifi</a></div></li>
+	      <li><div><a href="#">Utilities</a></div></li>
+	     </ul>
+	      </li>
+	      <li><div><a href="#">Movies</a></div></li>
+	      </ul>
+		     <!--слайдер-->
+			</br> <p>Слайдер</p>
+			 <div class="container content">
+                <div class="row">
+                <div class="col-md-6">
+                <form class="form-inline">
+                <div class="form-group">
+                <label for="start">Начальная цена</label>
+                <input type="text" name="start" class="form-control" id="start">
+                </div>
+                 <div class="form-group">
+                <label for="end">Конечная цена</label>
+                <input type="text" name="end" class="form-control" id="end">
+                </div>
+                </form>
+                 <br>
+                 <div id="slider"></div>
+                 </div>
+                   </div>
+                   </div>
+				   
+				   <p>
+				    <!--Tabs--> 
+					<div id="tabs">
+                         <ul>
+               <li><a href="#tabs-1">Вкладка 1</a></li>
+                <li><a href="#tabs-2">Вкладка 2</a></li>
+                <li><a href="#tabs-3">Вкладка 3</a></li>
+               </ul>
+               <div id="tabs-1">
+            <h2>Контент вкладки 1</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
+               labore!</p>
+              </div>
+               <div id="tabs-2">
+              <h2>Контент вкладки 2</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
+              labore!</p>
+              </div>
+              <div id="tabs-3">
+              <h2>Контент вкладки 3</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
+              labore!</p>
+              </div>
+              </div>
+				
+        <style>
+        .ui-menu { width: 150px; }
+		
+        .ui-menu a{
+      	display: block;
+	    text-decoration: none;
+        }
+        </style>
 </body>
 </html>

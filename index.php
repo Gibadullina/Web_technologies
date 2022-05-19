@@ -33,3 +33,9 @@
   <li><a href="lab4/4_ex2.html">Примеры JQuery UI</a></li>
   <li><a href="lab4/4.html">Волшебный мир</a></li> 
     </ul>
+	
+	  Лабораторная работа № 5
+    <ul> 
+  <li><a href="lab5/4_ex1.html">Крестики-нолики</a></li>
+
+    </ul>
